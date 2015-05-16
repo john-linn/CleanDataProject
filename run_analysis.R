@@ -15,9 +15,6 @@ analyze <- function () {
   comb_x <- rbind(test_x, train_x)
   comb_y <- rbind(test_y, train_y)
 
-  # Clean up now-superfluous working objects
-  rm(test_subj, test_x, test_y, train_subj, train_x, train_y)
-
   # Part 2
   # Select only the computed means and standard deviations for 17 variables
   # Features.txt identifies columns corresponding to variables
@@ -42,9 +39,6 @@ analyze <- function () {
   Activity <- actnames[comb_y[[1]],2]
   comb_subsx <- cbind(Activity,comb_subsx)
 
-  # Clean up temporary objects now incorporated into comb_subsx
-  rm(comb_x, comb_y, comb_subj, Activity, actnames)
-
   # Part 4
   # Derive numeric-form column names
   varncols <- mutate(varnames, sname=paste("V", 
@@ -56,11 +50,10 @@ analyze <- function () {
   namevec <- varnames[nindex,2]
   # Apply names ingested from features.txt to comb_subsx columns
   names(comb_subsx)[-c(1:2)] <- namevec
-  rm(nindex,namevec)
 
   # Part 5
   grouped_both <- group_by(comb_subsx,Activity,Subject)
-  # Valued SO pointers to recent dplyr function (with British spelling only)
+  # Recent dplyr function (with British spelling only) allows concise result
   grpout <- summarise_each(grouped_both,"mean")
   write.table(grpout,"ucidat.txt",row.names=FALSE)
 }
