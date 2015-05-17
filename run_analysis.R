@@ -24,9 +24,9 @@ analyze <- function () {
                        stringsAsFactors = FALSE,check.names=FALSE)
   # Select names matching desired string elements and produce subset table
   # with columns corresponding to the named variables
-  names_mean <- grep(pattern="-mean()",varnames[,2], fixed=TRUE)
-  names_std <- grep(pattern="-std()", varnames[,2], fixed=TRUE)
-  comb_subsx <- select(comb_x, sort(c(names_mean,names_std)))
+  namidx_mean <- grep(pattern="-mean()",varnames[,2], fixed=TRUE)
+  namidx_std <- grep(pattern="-std()", varnames[,2], fixed=TRUE)
+  comb_subsx <- select(comb_x, sort(c(namidx_mean,namidx_std)))
 
   # Prepend subject IDs as first table column
   comb_subsx <- cbind(comb_subj,comb_subsx)
