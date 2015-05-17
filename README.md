@@ -34,4 +34,4 @@ result, and the calling script then writes it to text file "ucidat.txt".
 
 This script has been tested within RStudio v. 0.98.1102 using R version 3.1.2 (Pumpkin 
 Helmet) on Mac OS X 10.10.3 Yosemite and
-on Ubuntu 15.04.  Dplyr package version 0.4.1 was used. 
+on Ubuntu 15.04 (32-bit).  Dplyr package version 0.4.1 was used on both platforms. 
