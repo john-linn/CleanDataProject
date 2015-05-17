@@ -19,12 +19,13 @@ analyze <- function () {
   # Select only the computed means and standard deviations for 17 variables
   # Features.txt identifies columns corresponding to variables
 
-  # Ingest variable names
+  # Ingest variable names from features.txt file
   varnames <- read.table("UCI HAR Dataset/features.txt", 
                        stringsAsFactors = FALSE,check.names=FALSE)
+  # Select names matching desired string elements and produce subset table
+  # with columns corresponding to the named variables
   names_mean <- grep(pattern="-mean()",varnames[,2], fixed=TRUE)
   names_std <- grep(pattern="-std()", varnames[,2], fixed=TRUE)
-
   comb_subsx <- select(comb_x, sort(c(names_mean,names_std)))
 
   # Prepend subject IDs as first table column
@@ -35,28 +36,30 @@ analyze <- function () {
   # Ingest activity label names
   actnames <- read.table("UCI HAR Dataset/activity_labels.txt",
                          stringsAsFactors = FALSE)
-  # Create vector of names
+  # Create vector of activity names and prepend as table column
   Activity <- actnames[comb_y[[1]],2]
   comb_subsx <- cbind(Activity,comb_subsx)
 
   # Part 4
-  # Derive numeric-form column names
+  # Derive numeric-form character column names to match those generated
+  # by read.table() default processing
   varncols <- mutate(varnames, sname=paste("V", 
                       as.character(varnames[,1]), sep=""))
   # Extract indices into varncols for each "Vnn" column name in comb_subsx,
-  # excepting comb_subsx's first (Subject) and 2nd (Activity) column
+  # except for first (Subject) and 2nd (Activity) column
   nindex <- match(names(comb_subsx[-c(1:2)]),varncols[,3])
-  # Look up corresponding column names
-  namevec <- varnames[nindex,2]
-  # Apply names ingested from features.txt to comb_subsx columns
-  names(comb_subsx)[-c(1:2)] <- namevec
+  # Look up corresponding column names from features.txt and
+  # apply those names to comb_subsx columns
+  names(comb_subsx)[-c(1:2)] <- varnames[nindex,2]
 
   # Part 5
   grouped_both <- group_by(comb_subsx,Activity,Subject)
-  # Recent dplyr function (with British spelling only) allows concise result
-  grpout <- summarise_each(grouped_both,"mean")
-  write.table(grpout,"ucidat.txt",row.names=FALSE)
+  # dplyr function (provided with Anglicized spelling only) 
+  # as of dplyr v1.2 allows concise computation of result
+  return(summarise_each(grouped_both,"mean"))
 }
 
-analyze()
+out_tbl <- analyze()
+write.table(out_tbl,"ucidat.txt",row.names=FALSE)
+
 

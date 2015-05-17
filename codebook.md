@@ -1,7 +1,7 @@
 #Project Codebook
 Codebook describing generated dataset
 
-Last update: 16 May 2015
+Last update: 17 May 2015
 
 This dataset provides a condensed version of information from the Human Activity
 Recognition Using Smartphones Data Set, as published at 
@@ -15,6 +15,10 @@ WALKING DOWNSTAIRS,
 SITTING, 
 STANDING, and 
 LAYING.
+All data was extracted from the "subject", "X", and "y" text files at the
+top levels of the input dataset's "test" and "train"
+subdirectories, without reference to the inertial data files in lower-level
+subdirectories. 
 
 For each of the resulting 180 combinations, the generated
 dataset provides calculated means for each of 66 variables, with names 
