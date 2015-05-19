@@ -1,7 +1,7 @@
 #Project Codebook
 Codebook describing generated dataset
 
-Last update: 17 May 2015
+Last update: 19 May 2015
 
 This dataset provides a condensed version of information from the Human Activity
 Recognition Using Smartphones Data Set, as published at 
@@ -18,11 +18,13 @@ LAYING.
 All data was extracted from the "subject", "X", and "y" text files at the
 top levels of the input dataset's "test" and "train"
 subdirectories, without reference to the inertial data files in lower-level
-subdirectories. 
+subdirectories.  Please refer to the "README.txt" and "features\_info.txt" files
+in the published dataset for further descriptive information, including normalization
+of variables. 
 
 For each of the resulting 180 combinations, the generated
 dataset provides calculated means for each of 66 variables, with names 
-corresponding to those in the *features.txt*
+corresponding to those in the "features.txt"
 file from the original dataset.  As directed in the course assignment, variables
 with names suffixed with "-mean()" or "-std()", optionally followed by
 "-X", "-Y", or "-Z" to designate dimensions, were selected; in other words, from
@@ -33,9 +35,9 @@ For each of the variables, the generated dataset provides a computed mean of the
 input dataset's values of that variable that correspond to a particular subject
 performing a particular activity. 
 Note that some of the variable names
-as extracted from *features.txt* differ from those in the dataset's descriptive
-*features_info.txt* file, as, e.g., being prefixed by "fBodyBody" instead
-of "fBody" as cited in *features_info.txt*.
+as extracted from "features.txt" differ from those in the dataset's descriptive
+"features\_info.txt" file, as, e.g., being prefixed by "fBodyBody" instead
+of "fBody" as cited in "features\_info.txt".
 
 Body Acceleration variables
 
