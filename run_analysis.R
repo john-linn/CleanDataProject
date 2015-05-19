@@ -53,10 +53,12 @@ analyze <- function () {
   names(comb_subsx)[-c(1:2)] <- varnames[nindex,2]
 
   # Part 5
-  grouped_both <- group_by(comb_subsx,Activity,Subject)
+  grouped_both <- group_by(comb_subsx,Activity,Subject, add=TRUE)
   # dplyr function (provided with Anglicized spelling only) 
   # as of dplyr v1.2 allows concise computation of result
-  return(summarise_each(grouped_both,"mean"))
+  sum_tbl <- summarise_each(grouped_both,"mean")
+  sum_tbl <- mutate(sum_tbl, Subject = factor(Subject))
+  return(sum_tbl)
 }
 
 out_tbl <- analyze()
