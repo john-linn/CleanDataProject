@@ -57,6 +57,11 @@ analyze <- function () {
   # dplyr function (provided with Anglicized spelling only) 
   # as of dplyr v1.2 allows concise computation of result
   sum_tbl <- summarise_each(grouped_both,"mean")
+  #adapting & testing per SO post, could replace above summarise_each() call as follows:
+  #cols <- names(grouped_both)[-(1:2)]
+  #dots <- lapply(cols, function(x) substitute (mean(x), list(x=as.name(x))))
+  #sum_tbl <- do.call(summarise,c(list(.data=grouped_both), dots))
+  #end of more obscure substitute for summarise_each
   sum_tbl <- mutate(sum_tbl, Subject = factor(Subject))
   return(sum_tbl)
 }
