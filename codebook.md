@@ -1,35 +1,44 @@
 #Project Codebook
 Codebook describing generated dataset
 
-Last update: 19 May 2015
+Last update: 20 May 2015
+
+##Input Data Summary
 
 This dataset provides a condensed version of information from the Human Activity
 Recognition Using Smartphones Data Set, as published at 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
-It provides data collected by observations of
-30 experimental subjects, each of whom engaged in 6 
+It provides data from observations of accelerometer and gyroscope
+data collected from 30 experimental subjects, yielding linear acceleration and angular
+velocity measurements.
+Each experimental subject engaged in 6 
 identified activities while wearing a smartphone:
-WALKING,
-WALKING UPSTAIRS,
-WALKING DOWNSTAIRS, 
-SITTING, 
-STANDING, and 
-LAYING.
-All data was extracted from the "subject", "X", and "y" text files at the
-top levels of the input dataset's "test" and "train"
-subdirectories, without reference to the inertial data files in lower-level
-subdirectories.  Please refer to the "README.txt" and "features\_info.txt" files
-in the published dataset for further descriptive information, including 
-specifics on normalization of the variables provided. 
+
+	WALKING
+	WALKING_UPSTAIRS
+	WALKING_DOWNSTAIRS 
+	SITTING 
+	STANDING
+	LAYING
+	
+Each value in the input dataset was normalized 
+and bounded to yield a result between -1 and 1. 
+Please refer to the "README.txt" and "features\_info.txt" files
+in the published dataset for further descriptive information.  
+
+##Processed Results
 
 For each of the resulting 180 combinations, the generated
 dataset provides calculated means for each of 66 variables, with names 
 corresponding to those in the "features.txt"
-file from the original dataset.  As directed in the course assignment, variables
-with names suffixed with "-mean()" or "-std()", optionally followed by
+file from the original dataset.  Variables
+with names suffixed with "-mean()" or "-std()", sometimes followed by
 "-X", "-Y", or "-Z" to designate dimensions, were selected; in other words, from
 the input dataset, only those variables representing means and standard deviations
-were processed.
+were processed. All data were extracted from the "subject", "X", and "y" text files at the
+top levels of the input dataset's "test" and "train"
+subdirectories, without reference to the inertial data files in lower-level
+subdirectories. 
 
 For each of the variables, the generated dataset provides a computed mean of the 
 input dataset's values of that variable that correspond to a particular subject
